@@ -1,10 +1,11 @@
 # forthvsc
 While Forth advocates routinely describe Forth in the most beautiful colors, I
 could not find any actual benchmarking comparing Forth to C. There's a
-reference implementation of RC4 on Wikipedia which I took to perform
-benchmarking with. I also took the RC4 description on Wikipedia and implemented
-it naively in C with no optimizations whatsoever, just the algorithm as it was
-described in pseudocode there.
+[reference implementation of RC4 on Wikipedia](https://en.wikipedia.org/wiki/Forth_(programming_language)#A_complete_RC4_cipher_program)
+which I took to perform benchmarking with. I also took the
+[RC4 description on Wikipedia](https://en.wikipedia.org/wiki/RC4#Key-scheduling_algorithm_(KSA))
+and implemented it naively in C with no optimizations whatsoever, just the
+algorithm as it was described in pseudocode there.
 
 ## Test Conditions
 Measured on an Intel Core i7-5930K CPU @ 3.50GHz using gcc 8.3.0 and gforth
