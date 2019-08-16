@@ -59,7 +59,7 @@ int main(int argc, char **argv) {
 	}
 
 	uint8_t key[5] = { 0x61, 0x8A, 0x63, 0xD2, 0xFB };
-    struct rc4_state_t ctx;
+	struct rc4_state_t ctx;
 
 	if (!strcmp(argv[1], "schedule")) {
 		for (int i = 0; i < 10000000; i++) {
@@ -78,4 +78,3 @@ int main(int argc, char **argv) {
 	/* Return something it isn't optimized away */
 	return ctx.S[0];
 }
-
