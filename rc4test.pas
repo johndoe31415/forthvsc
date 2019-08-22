@@ -1,5 +1,5 @@
 {
-	fpc -S2 -O3 pastest.pas
+	fpc -S2 -O3 rc4test.pas
 
 	"Performance ist nicht das Problem, es läuft ja nachher beides auf der
 	selben Hardware." -- Hans-Peter Diettrich in d.s.e.
@@ -24,6 +24,14 @@
 	Von einem C Programmierer erwarte ich keinen ordentlichen (vergleichbaren)
 	FORTH oder Pascal Code." -- Hans-Peter Diettrich in d.s.e.
 	<gs5vg7F6djfU2@mid.individual.net> on 2019-08-22
+
+	"C ist nicht *eine* Programmiersprache, sondern gleich mehrere. Neben der
+	klassischen Precompiler-Sprache kommen heute aus der Toolchain noch make
+	und M4 hinzu, mit nochmal eigener Syntax." -- Hans-Peter Diettrich in d.s.e.
+	<gs63veF797sU1@mid.individual.net> on 2019-08-22
+
+	"z.K.: PLONK" -- Hans-Peter Diettrich in d.s.e.
+	<gs7qecFih6gU1@mid.individual.net> on 2019-08-22
 }
 program RC4Test;
 
