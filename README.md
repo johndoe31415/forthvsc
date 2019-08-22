@@ -7,11 +7,16 @@ which I took to perform benchmarking with. I also took the
 and implemented it naively in C with no optimizations whatsoever, just the
 algorithm as it was described in pseudocode there.
 
+Also there's at least one charming people claiming that Pascal has a
+performance penalty of roughly 5% and who dared me to test it while themselves
+being too lazy, scared or incompetent to try it themselves. So I did.
+
 ## Test Conditions
 Measured on an Intel Core i7-5930K CPU @ 3.50GHz using gcc 8.3.0 and gforth
 0.7.3 on Linux 5.0.0. Since the speed difference is so vast, the number of
 generated schedules/keystream varies from C to Forth, consult the code for
-details.
+details. Pascal code was compiled with Free Pascal Compiler v3.0.4+dfsg-22
+[2019/01/24] for x86_64.
 
 ## Forth: Key Schedules
 ```
@@ -97,19 +102,65 @@ sys	0m0,001s
 
 Best of three: 5.976 seconds.
 
+## Pascal: Key Schedules
+```
+$ fpc -S2 -O3 rc4test.pas
+$ time ./rc4test
+real	0m23,604s
+user	0m23,603s
+sys	0m0,000s
+
+$ time ./rc4test
+real	0m23,601s
+user	0m23,600s
+sys	0m0,000s
+
+
+$ time ./rc4test
+real	0m23,651s
+user	0m23,648s
+sys	0m0,000s
+```
+
+Best of three: 23.601 seconds.
+
+## Pascal: RC4 Data Stream
+```
+$ fpc -S2 -O3 rc4test.pas
+$ time ./rc4test
+real	0m8,913s
+user	0m8,913s
+sys	0m0,000s
+
+$ time ./rc4test
+real	0m8,844s
+user	0m8,843s
+sys	0m0,001s
+
+$ time ./rc4test
+real	0m8,847s
+user	0m8,847s
+sys	0m0,001s
+```
+
+Best of three: 8.844 seconds.
+
 ## Comparison
 
-| Test          | Language | Iterations | Time/sec  | Iterations/Time | Factor |
-| --- | --- | --- | --- | --- | --- |
-| Key Schedules | Forth    | 100000     | 21.573    | 4635            | 1      |
-|               | C        | 10000000   | 6.822     | 1465846		  | 316    |
-| Key Stream    | Forth    | 10000000   | 19.560    | 511247          | 1      |
-|               | C        | 2000000000 | 5.976     | 334672021       | 655    |
+| Test          | Language | Iterations | Time/sec  | Iterations/Time | Factor | Factor  |
+| --- | --- | --- | --- | --- | --- | --- |
+| Key Schedules | Forth    | 100000     | 21.573    | 4635            | 1      | 1 / 91  |
+|               | C        | 10000000   | 6.822     | 1465846		  | 316    | 3.46    |
+|               | Pascal   | 10000000   | 23.601    | 423711		  | 91     | 1       |
+| Key Stream    | Forth    | 10000000   | 19.560    | 511247          | 1      | 1 / 442 |
+|               | C        | 2000000000 | 5.976     | 334672021       | 655    | 1.48    |
+|               | Pascal   | 2000000000 | 8.844     | 226142017       | 442    | 1       |
 
 I.e., in Forth on this particular test you get about 4.64 kSchedules/sec while
 in C you get 1.47 MSchedules/sec. In Forth, you get a data stream with about
-511 kB/s while in C you get 335 MB/s.
+511 kB/s while in C you get 335 MB/s. For Pascal, it's about 424 kSchedules/sec
+and a data stream of 226 MB/s.
 
 ## License
-All my code is CC-0. Forth code was taken from Wikipedia and is under the
-respective license.
+All my code (C, Pascal) is CC-0. Forth code was taken from Wikipedia and is
+under the respective license.
