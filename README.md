@@ -7,7 +7,7 @@ which I took to perform benchmarking with. I also took the
 and implemented it naively in C with no optimizations whatsoever, just the
 algorithm as it was described in pseudocode there.
 
-Also there's at least one charming people claiming that Pascal has a
+Also there's at least one charming person claiming that Pascal has a
 performance penalty of roughly 5% and who dared me to test it while themselves
 being too lazy, scared or incompetent to try it themselves. So I did.
 
