@@ -1,2 +1,4 @@
 rc4_c_impl
+rc4test
 .*.swp
+*.o
