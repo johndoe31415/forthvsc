@@ -1,4 +1,4 @@
-# forthvsc
+# forthvsc (and Pascal)
 While Forth advocates routinely describe Forth in the most beautiful colors, I
 could not find any actual benchmarking comparing Forth to C. There's a
 [reference implementation of RC4 on Wikipedia](https://en.wikipedia.org/wiki/Forth_(programming_language)#A_complete_RC4_cipher_program)
